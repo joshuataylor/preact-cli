@@ -199,7 +199,12 @@ const production = config => addPlugins([
 			/push-manifest\.json$/,
 			/.DS_Store/
 		]
-	})
+	}),
+	new webpack.DefinePlugin({
+		'process.env': {
+			'ADD_SW': config['service-worker']
+		}
+	}),
 ]);
 
 const htmlPlugin = (config, src) => {
